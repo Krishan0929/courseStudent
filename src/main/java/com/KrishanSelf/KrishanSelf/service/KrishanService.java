@@ -13,38 +13,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class KrishanService
-{
+public class KrishanService {
     @Autowired
     private studentRepo studentRepo;
 
     @Autowired
     private courseRepo courseRepo;
 
-    public List<student>  getAllStudents()
-    {
+    public List<student> getAllStudents() {
         return studentRepo.findAll();
     }
 
-    public student getStudentById(int id)
-    {
+    public student getStudentById(int id) {
         return studentRepo.getById(id);
     }
 
     public List<course> getCourseForStudent(int id) {
-        List name = new ArrayList<>();
+         List name = new ArrayList<course>();
 
-        try{
-            studentRepo.findById(id).getCourses();
-        }catch(NullPointerException ne){
-            throw new StudentNotFoundException("Student not Found with this name");
+        student st = studentRepo.findById(id);
+        if (st != null) {
+            return st.getCourses();
+        } else if (st == null) {
+            throw new StudentNotFoundException("Student not found with this id");
         }
-
-        List<course> courses = studentRepo.findById(id).getCourses();
+     List<course> courses = studentRepo.findById(id).getCourses();
 
         for (course Course : courses) {
             name.add(Course.getName());
         }
         return name;
     }
+
+
+
 }
