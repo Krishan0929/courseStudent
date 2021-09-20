@@ -8,12 +8,10 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class student
 {
@@ -37,5 +35,15 @@ public class student
     )
     private List<course> courses;
 
-
+   /* @Override
+    public String toString() {
+        return "student{" +
+                "id=" + id +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", dob='" + dob + '\'' +
+                ", gender='" + gender + '\'' +
+                ", courses=" + courses +
+                '}';
+    }*/
 }

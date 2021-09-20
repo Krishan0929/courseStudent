@@ -33,4 +33,16 @@ public class KrishanController
 
         return krishanService.getCourseForStudent(id);
     }
+
+    @GetMapping("/courses/{course_id}")
+    public course getCourseById(@PathVariable(name = "course_id") int id)
+    {
+        return krishanService.getCourseById(id);
+    }
+
+    @GetMapping("/courses/{course_id}/students")
+    public List<student> getSudentForCourse(@PathVariable(name = "course_id") int id) {
+
+        return krishanService.getSudentForCourse(id);
+    }
 }
